@@ -1,0 +1,196 @@
+[
+    {
+        "unit_type": 0,
+        "id": 1,
+        "lv": 1,
+        "name": "あなた",
+        "power": 4,
+        "weapon": "club",
+        "guard": 2,
+        "speed": 4,
+        "max_hp": 15,
+        "max_mp": 0,
+        "commands": [
+            "attack",
+            "escape"
+        ]
+    },
+    {
+        "unit_type": 0,
+        "id": 1,
+        "lv": 2,
+        "name": "あなた",
+        "power": 5,
+        "weapon": "club",
+        "guard": 2,
+        "speed": 4,
+        "max_hp": 22,
+        "max_mp": 0,
+        "commands": [
+            "attack",
+            "escape"
+        ]
+    },
+    {
+        "unit_type": 0,
+        "id": 1,
+        "lv": 3,
+        "name": "あなた",
+        "power": 7,
+        "weapon": "club",
+        "guard": 3,
+        "armor": "leather",
+        "speed": 6,
+        "max_hp": 24,
+        "max_mp": 5,
+        "commands": [
+            "attack",
+            "escape",
+            "cure"
+        ]
+    },
+    {
+        "unit_type": 0,
+        "id": 1,
+        "lv": 4,
+        "name": "あなた",
+        "power": 7,
+        "weapon": "copper_sword",
+        "guard": 4,
+        "armor": "leather",
+        "speed": 8,
+        "max_hp": 31,
+        "max_mp": 16,
+        "commands": [
+            "attack",
+            "escape",
+            "cure",
+            "fire"
+        ]
+    },
+    {
+        "unit_type": 0,
+        "id": 1,
+        "lv": 5,
+        "name": "あなた",
+        "power": 12,
+        "weapon": "copper_sword",
+        "guard": 5,
+        "armor": "leather",
+        "shield": "leather",
+        "speed": 10,
+        "max_hp": 35,
+        "max_mp": 20,
+        "commands": [
+            "attack",
+            "escape",
+            "cure",
+            "fire"
+        ]
+    },
+    {
+        "unit_type": 0,
+        "id": 1,
+        "lv": 6,
+        "name": "あなた",
+        "power": 16,
+        "weapon": "iron_ax",
+        "guard": 5,
+        "armor": "leather",
+        "shield": "leather",
+        "speed": 10,
+        "max_hp": 38,
+        "max_mp": 24,
+        "commands": [
+            "attack",
+            "escape",
+            "cure",
+            "fire"
+        ]
+    },
+    {
+        "unit_type": 0,
+        "id": 1,
+        "lv": 7,
+        "name": "あなた",
+        "power": 18,
+        "weapon": "iron_ax",
+        "guard": 8,
+        "armor": "chain",
+        "shield": "leather",
+        "speed": 17,
+        "max_hp": 40,
+        "max_mp": 26,
+        "commands": [
+            "attack",
+            "escape",
+            "cure",
+            "fire",
+            "magic_seal"
+        ]
+    },
+    {
+        "unit_type": 0,
+        "id": 1,
+        "lv": 8,
+        "name": "あなた",
+        "power": 22,
+        "weapon": "iron_ax",
+        "guard": 10,
+        "armor": "chain",
+        "shield": "leather",
+        "speed": 20,
+        "max_hp": 46,
+        "max_mp": 29,
+        "commands": [
+            "attack",
+            "escape",
+            "cure",
+            "fire",
+            "magic_seal"
+        ]
+    },
+    {
+        "unit_type": 0,
+        "id": 1,
+        "lv": 9,
+        "name": "あなた",
+        "power": 26,
+        "weapon": "iron_ax",
+        "guard": 11,
+        "armor": "chain",
+        "shield": "leather",
+        "speed": 22,
+        "max_hp": 50,
+        "max_mp": 36,
+        "commands": [
+            "attack",
+            "escape",
+            "cure",
+            "fire",
+            "magic_seal"
+        ]
+    },
+    {
+        "unit_type": 0,
+        "id": 1,
+        "lv": 10,
+        "name": "あなた",
+        "power": 30,
+        "weapon": "steel_sword",
+        "guard": 13,
+        "armor": "iron",
+        "shield": "leather",
+        "speed": 26,
+        "max_hp": 54,
+        "max_mp": 40,
+        "commands": [
+            "attack",
+            "escape",
+            "cure",
+            "fire",
+            "magic_seal",
+            "sleep"
+       ]
+    }
+]

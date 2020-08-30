@@ -1,0 +1,206 @@
+[
+    {
+        "unit_type": 1,
+        "id": 1,
+        "name": "軟体生物(青)",
+        "power": 5,
+        "guard": 3,
+        "speed": 2,
+        "max_hp": 3,
+        "max_mp": 0,
+        "commands": [
+            "attack"
+        ]
+    },
+    {
+        "unit_type": 1,
+        "id": 2,
+        "name": "軟体生物(赤)",
+        "power": 7,
+        "guard": 3,
+        "speed": 4,
+        "max_hp": 4,
+        "max_mp": 0,
+        "commands": [
+            "attack"
+        ]
+    },
+    {
+        "unit_type": 1,
+        "id": 3,
+        "name": "コウモリ",
+        "power": 9,
+        "guard": 6,
+        "speed": 5,
+        "max_hp": 6,
+        "max_mp": 0,
+        "commands": [
+            "attack"
+        ]
+    },
+    {
+        "unit_type": 1,
+        "id": 4,
+        "name": "幽霊",
+        "power": 11,
+        "guard": 8,
+        "speed": 6,
+        "max_hp": 7,
+        "max_mp": 0,
+        "commands": [
+            "attack"
+        ]
+    },
+    {
+        "unit_type": 1,
+        "id": 5,
+        "name": "魔法使い",
+        "power": 8,
+        "guard": 12,
+        "speed": 6,
+        "max_hp": 12,
+        "max_mp": 8,
+        "commands": [
+            "attack",
+            "fire"
+        ]
+    },
+    {
+        "unit_type": 1,
+        "id": 6,
+        "name": "魔法コウモリ",
+        "power": 13,
+        "guard": 13,
+        "speed": 8,
+        "max_hp": 15,
+        "max_mp": 8,
+        "commands": [
+            "attack",
+            "fire"
+        ]
+    },
+    {
+        "unit_type": 1,
+        "id": 7,
+        "name": "大ザリガニ",
+        "power": 18,
+        "guard": 35,
+        "speed": 4,
+        "max_hp": 15,
+        "max_mp": 0,
+        "commands": [
+            "attack"
+        ]
+    },
+    {
+        "unit_type": 1,
+        "id": 8,
+        "name": "食人植物",
+        "power": 20,
+        "guard": 15,
+        "speed": 11,
+        "max_hp": 22,
+        "max_mp": 0,
+        "commands": [
+            "attack"
+        ]
+    },
+    {
+        "unit_type": 1,
+        "id": 9,
+        "name": "魔法幽霊",
+        "power": 18,
+        "guard": 20,
+        "speed": 14,
+        "max_hp": 26,
+        "max_mp": 10,
+        "commands": [
+            "attack",
+            "fire"
+        ]
+    },
+    {
+        "unit_type": 1,
+        "id": 10,
+        "name": "がまぐちおばけ",
+        "power": 26,
+        "guard": 60,
+        "speed": 8,
+        "max_hp": 25,
+        "max_mp": 0,
+        "commands": [
+            "attack"
+        ]
+    },
+    {
+        "unit_type": 1,
+        "id": 11,
+        "name": "コウモリーマ",
+        "power": 20,
+        "guard": 26,
+        "speed": 18,
+        "max_hp": 20,
+        "max_mp": 14,
+        "commands": [
+            "attack",
+            "cure",
+            "fire",
+            "fire"
+        ]
+    },
+    {
+        "unit_type": 1,
+        "id": 12,
+        "name": "骸骨戦士",
+        "power": 35,
+        "guard": 24,
+        "speed": 17,
+        "max_hp": 30,
+        "max_mp": 0,
+        "commands": [
+            "attack"
+        ]
+    },
+    {
+        "unit_type": 1,
+        "id": 13,
+        "name": "魔導士",
+        "power": 28,
+        "guard": 22,
+        "speed": 17,
+        "max_hp": 30,
+        "max_mp": 30,
+        "commands": [
+            "attack",
+            "fire",
+            "fire",
+            "sleep"
+        ]
+    },
+    {
+        "unit_type": 1,
+        "id": 14,
+        "name": "鉄のザリガニ",
+        "power": 30,
+        "guard": 60,
+        "speed": 17,
+        "max_hp": 25,
+        "max_mp": 0,
+        "commands": [
+            "attack"
+        ]
+    },
+    {
+        "unit_type": 1,
+        "id": 15,
+        "name": "暴れ熊",
+        "power": 40,
+        "guard": 30,
+        "speed": 17,
+        "max_hp": 34,
+        "max_mp": 0,
+        "commands": [
+            "attack"
+       ]
+    }
+]
