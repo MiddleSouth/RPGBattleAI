@@ -43,9 +43,9 @@ class DQNPlayer():
 
     def set_learning_parameters(self,
         batch_size:int=128,
-        gamma:int=0.99,
-        eps_start:int=0.9,
-        eps_end:int=0.05,
+        gamma:float=0.99,
+        eps_start:float=0.9,
+        eps_end:float=0.05,
         eps_decay:int=90,
         target_update:int=10,
         num_episodes:int=100
