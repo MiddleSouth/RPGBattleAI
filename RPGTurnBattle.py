@@ -9,15 +9,15 @@ from battle.command import PlayerCommands
 
 class Simulation:
 
-    def __init__(self, data_folder_path:str='battle/data/', lvs:list=[5]):
+    def __init__(self, data_folder_path:str='battle/data/', scenarios:list=['default']):
         """コンストラクタ
 
         Args:
             data_folder_path (str, optional): Unitデータの格納先フォルダパス. Defaults to 'Lv3/battle/data/'.
-            lvs (list, optional): 主人公のレベルのリスト. Defaults to [5].
+            scenarios (list, optional): ゲームシナリオのリスト. Defaults to ['default'].
         """
         self.data_folder_path = data_folder_path
-        self.lvs = lvs
+        self.scenarios = scenarios
 
         self.n_battle = 0
         self.message = ''
@@ -44,7 +44,7 @@ class Simulation:
 
         # 戦闘準備
         self.battle.reset(
-            self.lvs[random.randrange(len(self.lvs))]
+            self.scenarios[random.randrange(len(self.scenarios))]
         )
 
         # 最初の敵と遭遇

@@ -3,6 +3,7 @@ import random
 import json
 from typing import Tuple
 
+from battle.scenario import Scenario, load_scenarios
 from battle.unit import UnitType, Unit, load_units
 from battle.command import PlayerCommands, EnemyCommands, ActionResults
 
@@ -11,14 +12,13 @@ class Battle():
         """コンストラクタ
 
         Args:
-            lv (int): 主人公のレベル
             data_folder_path (str, optional): Unitデータの格納先フォルダパス.
         """
         self.player_list = load_units(path.join(data_folder_path, 'player.json'))
         self.set_command_pattern(self.player_list, UnitType.PLAYER)
 
-        with open(file=path.join(data_folder_path, 'encount.json'), mode='r', encoding='utf-8') as f:
-            self.encounts = json.load(f)
+        self.scenarios = load_scenarios(path.join(data_folder_path, 'scenarios.json'))
+
         self.enemy_list = load_units(path.join(data_folder_path, 'enemies.json'))
         self.set_command_pattern(self.enemy_list, UnitType.ENEMY)
 
@@ -38,15 +38,17 @@ class Battle():
             for key in commands:
                 unit.command_pattern.append(int(key in unit.commands))
 
-    def reset(self, lv:int):
+    def reset(self, scenario_code:str):
         """最初の戦闘開始状態に初期化する
 
         Args:
-            lv (int): プレイヤーのレベル
+            scenario_code (str): ゲームシナリオ
         """
-        self.player = list(filter(lambda x: x.lv == lv, self.player_list))[0]
+        scenario = list(filter(lambda x: x.scenario_code == scenario_code, self.scenarios))[0]
+
+        self.player = list(filter(lambda x: x.lv == scenario.player_lv, self.player_list))[0]
         self.player.recovery_all()
-        self.enemies = list(filter(lambda x: x.id in self.encounts.get(str(lv)), self.enemy_list))
+        self.enemies = list(filter(lambda x: x.id in scenario.enemies, self.enemy_list))
         self.total_damage = 0
         self.escape = False
 
