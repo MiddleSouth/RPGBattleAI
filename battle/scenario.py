@@ -5,29 +5,15 @@ from typing import Union
 @dataclass
 class Scenario:
     """シナリオ"""
-    # Todo:playerやenemiesは別のデータクラスに切り出すことを検討する
     scenario_code : str
     player_lv: int
     enemies: list
-    boss: int
 
-def scenario_decode(json_object:dict)->Scenario:
-    """ScenarioのJSONをデコードする
+    # Todo
+    #boss: int
+    #items: list
 
-    Args:
-        json_object (dict): JSONのオブジェクト
-
-    Returns:
-        Scenario: JSONからデコードしたScenarioインスタンス
-    """
-    return Scenario(
-        scenario_code=json_object['scenario_code'],
-        player_lv=json_object['player_lv'],
-        enemies=json_object['normal_enemies'],
-        boss=json_object['boss'],
-    )
-
-def load_scenarios(file_path:str)->Union[list, Scenario]:
+def load_scenarios(file_path:str)->list:
     """シナリオ情報を読み込む
 
     Args:
@@ -38,5 +24,14 @@ def load_scenarios(file_path:str)->Union[list, Scenario]:
     """
     with open(file=file_path, mode='r', encoding='utf-8') as f:
         sf = f.read()
-        decode = json.JSONDecoder(object_hook=scenario_decode).decode(sf)
-        return decode
+        decode = json.JSONDecoder().decode(sf)
+        scenarios = []
+        for scenario in decode:
+            scenarios.append(
+                Scenario(
+                    scenario_code=scenario["scenario_code"],
+                    player_lv=scenario["player"]["lv"],
+                    enemies=scenario["enemies"]["normal_enemies"],
+                )
+            )
+        return scenarios

@@ -90,13 +90,6 @@ class Unit:
 
         return not self.sleep
 
-class UnitEncoder(json.JSONEncoder):
-    """UnitオブジェクトをJSONにエンコードする"""
-    def default(self, o):
-        if isinstance(o, Unit):
-            return o.__dict__
-        return super(UnitEncoder, self).default(0)
-
 def unit_decode(json_object:dict)->Unit:
     """UnitオブジェクトのみのJSONをデコードする
 
