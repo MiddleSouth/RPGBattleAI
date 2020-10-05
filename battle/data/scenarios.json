@@ -14,7 +14,7 @@
             "lv": 7
         },
         "enemies":{
-            "normal_enemies": [6, 7, 8, 9, 11]
+            "normal_enemies": [6, 8, 9, 10, 11]
         }
     }
 

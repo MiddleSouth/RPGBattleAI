@@ -107,15 +107,18 @@ class Simulation:
             np.array: 状態
         """
         l = [
+            self.battle.player.max_hp,
             self.battle.player.hp,
             self.battle.player.mp,
             self.battle.player.attack,
             self.battle.player.difense,
+            self.battle.player.speed,
             int(self.battle.player.seal_spell),
             int(self.battle.player.sleep),
             self.battle.enemy.max_hp,
             self.battle.enemy.attack,
             self.battle.enemy.difense,
+            self.battle.enemy.speed,
             int(self.battle.enemy.seal_spell),
             int(self.battle.enemy.sleep),
             self.battle.total_damage,
