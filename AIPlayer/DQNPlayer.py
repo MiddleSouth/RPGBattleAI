@@ -225,8 +225,11 @@ class DQNPlayer():
                     print(message)
 
             result_rewards.append(total_reward)
-            if int(next_state[0][0].item()) == 0:
+
+            # HPが0になったら死亡回数をカウントする
+            if int(next_state[0][1].item()) == 0:
                 dead_count += 1
+
             if is_render:
                 print(f'獲得報酬は{total_reward}です。')
         
