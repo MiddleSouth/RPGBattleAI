@@ -9,15 +9,14 @@ from battle.command import PlayerCommands
 
 class Simulation:
 
-    def __init__(self, data_folder_path:str='battle/data/', scenarios:list=['default']):
+    def __init__(self, data_folder_path:str='battle/data/', scenario_code:str='default'):
         """コンストラクタ
 
         Args:
             data_folder_path (str, optional): Unitデータの格納先フォルダパス. Defaults to 'Lv3/battle/data/'.
-            scenarios (list, optional): ゲームシナリオのリスト. Defaults to ['default'].
+            scenario (str, optional): ゲームのシナリオ. Defaults to 'default'.
         """
         self.data_folder_path = data_folder_path
-        self.scenarios = scenarios
 
         self.n_battle = 0
         self.message = ''
@@ -25,9 +24,7 @@ class Simulation:
         self.is_firat_attack = True
 
         # 戦闘データ読み込み
-        self.battle = Battle(
-            self.data_folder_path
-        )
+        self.battle = Battle(self.data_folder_path, scenario_code)
 
     def reset(self)->np.array:
         """環境を初期化する
@@ -43,9 +40,7 @@ class Simulation:
         self.n_battle = 0
 
         # 戦闘準備
-        self.battle.reset(
-            self.scenarios[random.randrange(len(self.scenarios))]
-        )
+        self.battle.reset()
 
         # 最初の敵と遭遇
         self.battle.encount()

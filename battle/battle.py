@@ -8,19 +8,26 @@ from battle.unit import UnitType, Unit, load_units
 from battle.command import PlayerCommands, EnemyCommands, ActionResults
 
 class Battle():
-    def __init__(self, data_folder_path:str):
+    def __init__(self, data_folder_path:str, scenario_code):
         """コンストラクタ
 
         Args:
             data_folder_path (str, optional): Unitデータの格納先フォルダパス.
+            scenario (str, optional): ゲームのシナリオ. Defaults to 'default'.
         """
+        # シナリオ読み込み
+        scenarios = load_scenarios(path.join(data_folder_path, 'scenarios.json'))
+        scenario = list(filter(lambda x: x.scenario_code == scenario_code, scenarios))[0]
+
+        # プレイヤーデータ読み込み
         self.player_list = load_units(path.join(data_folder_path, 'player.json'))
         self.set_command_pattern(self.player_list, UnitType.PLAYER)
+        self.player = list(filter(lambda x: x.lv == scenario.player_lv, self.player_list))[0]
 
-        self.scenarios = load_scenarios(path.join(data_folder_path, 'scenarios.json'))
-
+        # 敵データ読み込み
         self.enemy_list = load_units(path.join(data_folder_path, 'enemies.json'))
         self.set_command_pattern(self.enemy_list, UnitType.ENEMY)
+        self.enemies = list(filter(lambda x: x.id in scenario.enemies, self.enemy_list))
 
     def set_command_pattern(self, units:list, unit_type:UnitType):
         """ユニットが使用可能なコマンドをセットする
@@ -38,17 +45,10 @@ class Battle():
             for key in commands:
                 unit.command_pattern.append(int(key in unit.commands))
 
-    def reset(self, scenario_code:str):
+    def reset(self):
         """最初の戦闘開始状態に初期化する
-
-        Args:
-            scenario_code (str): ゲームシナリオ
         """
-        scenario = list(filter(lambda x: x.scenario_code == scenario_code, self.scenarios))[0]
-
-        self.player = list(filter(lambda x: x.lv == scenario.player_lv, self.player_list))[0]
         self.player.recovery_all()
-        self.enemies = list(filter(lambda x: x.id in scenario.enemies, self.enemy_list))
         self.total_damage = 0
         self.escape = False
 
