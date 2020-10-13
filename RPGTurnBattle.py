@@ -119,10 +119,6 @@ class Simulation:
             self.battle.total_damage,
             self.n_battle
         ]
-        
-        l.extend(
-            self.battle.player.command_pattern
-        )
 
         l.extend(
             self.battle.enemy.command_pattern
@@ -135,7 +131,7 @@ class Simulation:
         Returns:
             int: 選択可能な行動数
         """
-        return len(PlayerCommands)
+        return len(self.battle.player.commands)
 
     def render_command_list(self)->str:
         """人間のプレイヤー向けにコマンドリストを表示する。
