@@ -122,11 +122,11 @@
     {
         "unit_type": 1,
         "id": 10,
-        "name": "がまぐちおばけ",
+        "name": "鉄のザリガニ",
         "power": 26,
-        "guard": 60,
+        "guard": 50,
         "speed": 8,
-        "max_hp": 25,
+        "max_hp": 15,
         "max_mp": 0,
         "commands": [
             "attack"
@@ -180,7 +180,7 @@
     {
         "unit_type": 1,
         "id": 14,
-        "name": "鉄のザリガニ",
+        "name": "鋼鉄のザリガニ",
         "power": 30,
         "guard": 60,
         "speed": 17,

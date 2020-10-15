@@ -1,0 +1,21 @@
+[
+    {
+        "scenario_code": "default",
+        "player":{
+            "lv": 5
+        },
+        "enemies":{
+            "normal_enemies": [3, 4, 5, 6, 7]
+        }
+    },
+    {
+        "scenario_code": "sample",
+        "player":{
+            "lv": 7
+        },
+        "enemies":{
+            "normal_enemies": [6, 8, 9, 10, 11]
+        }
+    }
+
+]

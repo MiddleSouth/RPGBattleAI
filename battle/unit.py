@@ -90,13 +90,6 @@ class Unit:
 
         return not self.sleep
 
-class UnitEncoder(json.JSONEncoder):
-    """UnitオブジェクトをJSONにエンコードする"""
-    def default(self, o):
-        if isinstance(o, Unit):
-            return o.__dict__
-        return super(UnitEncoder, self).default(0)
-
 def unit_decode(json_object:dict)->Unit:
     """UnitオブジェクトのみのJSONをデコードする
 
@@ -129,7 +122,7 @@ def load_units(file_path:str)->Union[list, Unit]:
         file_path (str): 読み込み対象のJSONファイルパス
 
     Returns:
-        list: 読み込み結果(ユニット(連想配列)のリスト)
+        list: 読み込み結果(ユニットのリスト)
     """
     with open(file=file_path, mode='r', encoding='utf-8') as f:
         sf = f.read()

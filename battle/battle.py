@@ -3,24 +3,31 @@ import random
 import json
 from typing import Tuple
 
+from battle.scenario import Scenario, load_scenarios
 from battle.unit import UnitType, Unit, load_units
 from battle.command import PlayerCommands, EnemyCommands, ActionResults
 
 class Battle():
-    def __init__(self, data_folder_path:str):
+    def __init__(self, data_folder_path:str, scenario_code):
         """コンストラクタ
 
         Args:
-            lv (int): 主人公のレベル
             data_folder_path (str, optional): Unitデータの格納先フォルダパス.
+            scenario (str, optional): ゲームのシナリオ. Defaults to 'default'.
         """
+        # シナリオ読み込み
+        scenarios = load_scenarios(path.join(data_folder_path, 'scenarios.json'))
+        scenario = list(filter(lambda x: x.scenario_code == scenario_code, scenarios))[0]
+
+        # プレイヤーデータ読み込み
         self.player_list = load_units(path.join(data_folder_path, 'player.json'))
         self.set_command_pattern(self.player_list, UnitType.PLAYER)
+        self.player = list(filter(lambda x: x.lv == scenario.player_lv, self.player_list))[0]
 
-        with open(file=path.join(data_folder_path, 'encount.json'), mode='r', encoding='utf-8') as f:
-            self.encounts = json.load(f)
+        # 敵データ読み込み
         self.enemy_list = load_units(path.join(data_folder_path, 'enemies.json'))
         self.set_command_pattern(self.enemy_list, UnitType.ENEMY)
+        self.enemies = list(filter(lambda x: x.id in scenario.enemies, self.enemy_list))
 
     def set_command_pattern(self, units:list, unit_type:UnitType):
         """ユニットが使用可能なコマンドをセットする
@@ -38,15 +45,10 @@ class Battle():
             for key in commands:
                 unit.command_pattern.append(int(key in unit.commands))
 
-    def reset(self, lv:int):
+    def reset(self):
         """最初の戦闘開始状態に初期化する
-
-        Args:
-            lv (int): プレイヤーのレベル
         """
-        self.player = list(filter(lambda x: x.lv == lv, self.player_list))[0]
         self.player.recovery_all()
-        self.enemies = list(filter(lambda x: x.id in self.encounts.get(str(lv)), self.enemy_list))
         self.total_damage = 0
         self.escape = False
 

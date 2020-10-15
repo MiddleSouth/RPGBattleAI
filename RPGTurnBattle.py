@@ -9,15 +9,14 @@ from battle.command import PlayerCommands
 
 class Simulation:
 
-    def __init__(self, data_folder_path:str='battle/data/', lvs:list=[5]):
+    def __init__(self, data_folder_path:str='battle/data/', scenario_code:str='default'):
         """コンストラクタ
 
         Args:
             data_folder_path (str, optional): Unitデータの格納先フォルダパス. Defaults to 'Lv3/battle/data/'.
-            lvs (list, optional): 主人公のレベルのリスト. Defaults to [5].
+            scenario (str, optional): ゲームのシナリオ. Defaults to 'default'.
         """
         self.data_folder_path = data_folder_path
-        self.lvs = lvs
 
         self.n_battle = 0
         self.message = ''
@@ -25,9 +24,7 @@ class Simulation:
         self.is_firat_attack = True
 
         # 戦闘データ読み込み
-        self.battle = Battle(
-            self.data_folder_path
-        )
+        self.battle = Battle(self.data_folder_path, scenario_code)
 
     def reset(self)->np.array:
         """環境を初期化する
@@ -43,9 +40,7 @@ class Simulation:
         self.n_battle = 0
 
         # 戦闘準備
-        self.battle.reset(
-            self.lvs[random.randrange(len(self.lvs))]
-        )
+        self.battle.reset()
 
         # 最初の敵と遭遇
         self.battle.encount()
@@ -107,24 +102,23 @@ class Simulation:
             np.array: 状態
         """
         l = [
+            self.battle.player.max_hp,
             self.battle.player.hp,
             self.battle.player.mp,
             self.battle.player.attack,
             self.battle.player.difense,
+            self.battle.player.speed,
             int(self.battle.player.seal_spell),
             int(self.battle.player.sleep),
             self.battle.enemy.max_hp,
             self.battle.enemy.attack,
             self.battle.enemy.difense,
+            self.battle.enemy.speed,
             int(self.battle.enemy.seal_spell),
             int(self.battle.enemy.sleep),
             self.battle.total_damage,
             self.n_battle
         ]
-        
-        l.extend(
-            self.battle.player.command_pattern
-        )
 
         l.extend(
             self.battle.enemy.command_pattern
@@ -137,7 +131,7 @@ class Simulation:
         Returns:
             int: 選択可能な行動数
         """
-        return len(PlayerCommands)
+        return len(self.battle.player.commands)
 
     def render_command_list(self)->str:
         """人間のプレイヤー向けにコマンドリストを表示する。
